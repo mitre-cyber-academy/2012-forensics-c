@@ -1,0 +1,5 @@
+My recipe should do all the necessary configurations and file alterations.
+
+If any errors show up when the file is run, please ensure that the files are in the locations specified in the recipe and that the permissions are set correctly.
+
+Thank you

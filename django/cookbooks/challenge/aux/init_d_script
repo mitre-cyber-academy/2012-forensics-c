@@ -1,0 +1,38 @@
+#!/bin/bash
+
+start() {
+  if [ -e /home/ubuntu/django_pid ]
+  then
+    echo "Service already running" 
+  else
+    sudo -u www-data python /var/www/wiki/manage.py runserver 0.0.0.0:8080 &
+    echo $! >> /home/ubuntu/django_pid
+  fi
+}
+
+stop() {
+  if [ -e /home/ubuntu/django_pid ]
+  then
+    cat /home/ubuntu/django_pid | xargs kill -9
+  fi
+  rm -f /home/ubuntu/django_pid
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    stop
+    start
+    ;;
+  *)
+    echo "Usage: {start|stop|restart}"
+    exit 1
+    ;;
+esac
+
+exit $?

@@ -1,0 +1,5 @@
+---
+username:     "ubuntu"
+flavor:       "c1.medium"
+image:        "ami-e358958a"
+ssh:          "false"
